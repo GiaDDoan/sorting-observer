@@ -2,7 +2,9 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <nav className='w-screen bg-gray-300 grid grid-flow-row'>
+        Navbar
+    </nav>
   )
 }
 
