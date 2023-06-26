@@ -1,3 +1,0 @@
-"# sorting-observer" 
-
-Test
