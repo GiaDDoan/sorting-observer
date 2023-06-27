@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 
 const initVals: Settings = {
   algoType: 'merge sort',
@@ -6,8 +6,10 @@ const initVals: Settings = {
   delay: 15
 }
 
+export type Algo = "merge sort" | "insertion sort";
+
 interface Settings {
-  algoType: 'merge sort' | 'insertion sort';
+  algoType: Algo;
   arrayLen: number;
   delay: number;
 }
@@ -21,17 +23,36 @@ export const AlgoContext = createContext<SettingsContext>({
   settings: initVals 
 });
 
+type Items = {
+  items: number[],
+  setItems?: React.Dispatch<React.SetStateAction<number[]>>,
+}
+
+export const ItemsContext = createContext<Items>({ items: [] });
+
 interface Props {
   children: React.ReactNode;
 }
 
 const AlgoProvider: React.FC<Props> = ({ children }) => {
   const [settings, setSettings] = useState<Settings>(initVals);
+  const [items, setItems] = useState<number[]>([]);
+
+  useEffect(() => {
+    const randomNums = [];
+    for (let i = 0; i < settings.arrayLen; i++) {
+      randomNums.push(Math.floor(Math.random() * 540));
+    }
+
+    setItems(randomNums);
+  }, [settings.arrayLen])
 
   return (
-    <AlgoContext.Provider value={{ settings, setSettings}}>
-      {children}
-    </AlgoContext.Provider>
+    <ItemsContext.Provider value={{ items, setItems}}>
+      <AlgoContext.Provider value={{ settings, setSettings}}>
+        {children}
+      </AlgoContext.Provider>
+    </ItemsContext.Provider>
   )
 }
 
