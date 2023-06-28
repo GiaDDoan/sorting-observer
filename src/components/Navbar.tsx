@@ -51,14 +51,14 @@ const Navbar = () => {
             min={1}
             onChange={onArrayChange}
           />
-          <label htmlFor="delay">Delay: {settings.delay}ms</label>
+          <label htmlFor="delay">Delay: {settings.delay}</label>
           <input
             type="range"
             name="delay"
             id="delay"
             className='w-full max-w-2xl'
             defaultValue={15}
-            min={3}
+            min={1}
             onChange={onDelayChange}
           />
         </div>
