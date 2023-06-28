@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from 'react'
+import { getInsertionSortAnims } from '../utils/InsertionSort';
 
 const initVals: Settings = {
   algoType: 'merge sort',
@@ -16,11 +17,13 @@ interface Settings {
 
 type SettingsContext = {
   settings: Settings,
-  setSettings?: React.Dispatch<React.SetStateAction<Settings>>
+  setSettings?: React.Dispatch<React.SetStateAction<Settings>>,
+  sort: (algoType: Algo) => void;
 }
 
 export const AlgoContext = createContext<SettingsContext>({
-  settings: initVals 
+  settings: initVals,
+  sort: () => {},
 });
 
 type Items = {
@@ -47,9 +50,52 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
     setItems(randomNums);
   }, [settings.arrayLen])
 
+  const sort = (algoType: Algo) => {
+    switch (algoType) {
+      case 'insertion sort': {
+        const [newArr, animArr] = getInsertionSortAnims(items);
+        animateDivs(newArr, animArr);
+        break;
+      }
+      case 'merge sort': {
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  };
+
+  const animateDivs = (newArr: number[], arr: number[][]) => {
+    arr.forEach(([first, second], idx) => {
+      const div = document.getElementById(`${first}`);
+      const div2 = document.getElementById(`${second}`);
+
+      if (!div || !div2) return;
+
+      setTimeout(() => {
+        div.style.backgroundColor = "#b041f0";
+        div2.style.backgroundColor = "#b041f0";
+
+        const divHeight = div.style.height;
+        div.style.height = div2.style.height;
+        div2.style.height = divHeight;
+
+        setTimeout(() => {
+          div.style.backgroundColor = "#482";
+          div2.style.backgroundColor = "#482";
+
+          if (idx === arr.length - 1) {
+            setItems(newArr);
+          }
+        }, settings.delay * 5)
+      }, settings.delay * idx * 5)
+    });
+  }
+
   return (
     <ItemsContext.Provider value={{ items, setItems}}>
-      <AlgoContext.Provider value={{ settings, setSettings}}>
+      <AlgoContext.Provider value={{ settings, setSettings, sort }}>
         {children}
       </AlgoContext.Provider>
     </ItemsContext.Provider>

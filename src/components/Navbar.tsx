@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Algo, AlgoContext } from '../contexts/AlgoProvider';
 
 const Navbar = () => {
-  const { settings, setSettings } = useContext(AlgoContext);
+  const { settings, setSettings, sort } = useContext(AlgoContext);
 
   const onArrayChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if(!setSettings) return;
@@ -15,7 +15,6 @@ const Navbar = () => {
   }
 
   const onClickSelect = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     type: Algo
   ) => {
     if(!setSettings) return;
@@ -28,18 +27,18 @@ const Navbar = () => {
           <div>
             <button
               className={`border border-teal-100 shadow-md py-2 px-4 transition-all active:scale-95 ${settings.algoType === "merge sort" && "text-red-500"}`}
-              onClick={(e) => onClickSelect(e, "merge sort")}
+              onClick={() => onClickSelect("merge sort")}
             >
               Merge Sort
             </button>
             <button
               className={`border border-teal-100 shadow-md py-2 px-4 transition-all active:scale-95 ${settings.algoType === "insertion sort" && "text-red-500"}`}
-              onClick={(e) => onClickSelect(e, "insertion sort")}
+              onClick={() => onClickSelect("insertion sort")}
             >
               Insertion Sort
             </button>
           </div>
-          <button className='underline'>Sort!</button>
+          <button className='underline' onClick={() => sort(settings.algoType)}>Sort!</button>
         </div>
         <div className='flex flex-col items-center w-full pb-3'>
           <label htmlFor="items_amount">Array Length: {settings.arrayLen}</label>
