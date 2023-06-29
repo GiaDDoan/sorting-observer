@@ -1,6 +1,8 @@
 import { useState, createContext, useEffect } from 'react'
-import { getInsertionSortAnims } from '../utils/algorithms/InsertionSort';
-import { getMergeSortAnims } from '../utils/algorithms/MergeSort';
+import { getInsertionSortAnims } from '../utils/algorithms/insertionSort';
+import { getMergeSortAnims } from '../utils/algorithms/mergeSort';
+import { getHeapSortAnims } from '../utils/algorithms/heapSort';
+import { getQuickSortAnims } from '../utils/algorithms/quickSort';
 import { Algo, ISettingsContext, Items, Settings } from './AlgoProdiver.types';
 import { animateDivs, animateMerge } from '../utils/animations/animate';
 
@@ -50,7 +52,24 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
         animateMerge({ newArr: nums, arr, setItems, settings });
         break;
       }
-      default: {
+      case "heap sort": {
+        const { heapSorted, heapSortAnims } = getHeapSortAnims(items);
+        animateDivs({
+          newArr: heapSorted,
+          arr: heapSortAnims,
+          setItems,
+          settings,
+        });
+        break;
+      }
+      case "quick sort": {
+        const { quickSorted, quickSortAnims } = getQuickSortAnims(items);
+        animateDivs({
+          newArr: quickSorted,
+          arr: quickSortAnims,
+          setItems,
+          settings,
+        });
         break;
       }
     }
