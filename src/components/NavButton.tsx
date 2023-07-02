@@ -45,6 +45,14 @@ const NavButtons: React.FC<Props> = ({ onAlgoChange, settings, sort, resetArray 
       >
         Quick Sort
       </button>
+      <button
+        className={`border border-teal-100 shadow-md py-2 px-4 transition-all active:scale-95 ${
+          settings.algoType === "bubble sort" && "text-purple-500"
+        }`}
+        onClick={() => onAlgoChange("bubble sort")}
+      >
+        Bubble Sort
+      </button>
     </div>
     <button className="underline" onClick={() => sort(settings.algoType)}>
       Sort!

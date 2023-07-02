@@ -5,6 +5,7 @@ import { getHeapSortAnims } from '../utils/algorithms/heapSort';
 import { getQuickSortAnims } from '../utils/algorithms/quickSort';
 import { Algo, ISettingsContext, Items, Settings } from './AlgoProdiver.types';
 import { animateDivs, animateMerge } from '../utils/animations/animate';
+import { getBubbleSortAnims } from '../utils/algorithms/bubbleSort';
 
 const initVals: Settings = {
   algoType: 'merge sort',
@@ -77,6 +78,17 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
         animateDivs({
           newArr: quickSorted,
           arr: quickSortAnims,
+          setItems,
+          settings,
+        });
+        break;
+      }
+      case "bubble sort": {
+        const { bubbleSorted, bubbleSortAnims } = getBubbleSortAnims(items);
+
+        animateDivs({
+          newArr: bubbleSorted,
+          arr: bubbleSortAnims,
           setItems,
           settings,
         });
