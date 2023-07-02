@@ -15,6 +15,7 @@ const initVals: Settings = {
 export const AlgoContext = createContext<ISettingsContext>({
   settings: initVals,
   sort: () => {},
+  resetArray: () => {},
 });
 
 
@@ -36,6 +37,15 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
 
     setItems(randomNums);
   }, [settings.arrayLen])
+
+  const resetArray = () => {
+    const randomNums = [];
+    for (let i = 0; i < settings.arrayLen; i++) {
+      randomNums.push(Math.floor(Math.random() * 540));
+    }
+
+    setItems(randomNums);
+  }
 
   const sort = (algoType: Algo) => {
     switch (algoType) {
@@ -77,7 +87,7 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <ItemsContext.Provider value={{ items, setItems}}>
-      <AlgoContext.Provider value={{ settings, setSettings, sort }}>
+      <AlgoContext.Provider value={{ settings, setSettings, sort, resetArray }}>
         {children}
       </AlgoContext.Provider>
     </ItemsContext.Provider>

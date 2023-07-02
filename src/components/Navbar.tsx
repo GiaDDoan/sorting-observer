@@ -1,14 +1,16 @@
 import { useContext } from 'react';
-import { Algo, AlgoContext } from '../contexts/AlgoProvider';
+import { AlgoContext } from '../contexts/AlgoProvider';
 import NavButtons from './NavButton';
+import { Algo } from '../contexts/AlgoProdiver.types';
 
 const Navbar = () => {
-  const { settings, setSettings, sort } = useContext(AlgoContext);
+  const { settings, setSettings, sort, resetArray } = useContext(AlgoContext);
 
   const onArrayChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if(!setSettings) return;
     setSettings(p => ({ ...p, arrayLen: +e.target.value * 5 }));
   }
+
 
   const onDelayChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if(!setSettings) return;
@@ -24,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className='w-screen bg-gray-300 grid grid-flow-row'>
-      <NavButtons onAlgoChange={onAlgoChange} settings={settings} sort={sort} />
+      <NavButtons onAlgoChange={onAlgoChange} settings={settings} sort={sort} resetArray={resetArray} />
       <div className='flex flex-col items-center w-full pb-3'>
         <label htmlFor="items_amount">Array Length: {settings.arrayLen}</label>
         <input

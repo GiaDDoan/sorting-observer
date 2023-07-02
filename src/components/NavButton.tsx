@@ -4,10 +4,14 @@ interface Props {
   onAlgoChange: (type: Algo) => void;
   settings: Settings;
   sort: (algoType: Algo) => void;
+  resetArray: () => void;
 }
 
-const NavButtons: React.FC<Props> = ({ onAlgoChange, settings, sort }) => (
+const NavButtons: React.FC<Props> = ({ onAlgoChange, settings, sort, resetArray }) => (
   <div className="row-span-1 flex items-center justify-center w-5/6 max-w-4xl mx-auto gap-5">
+    <button className="underline" onClick={() => resetArray()}>
+      Get new Array
+    </button>
     <div className="flex flex-wrap justify-center">
       <button
         className={`border border-teal-100 shadow-md py-2 px-4 transition-all active:scale-95 ${

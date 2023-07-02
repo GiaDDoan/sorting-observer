@@ -10,6 +10,7 @@ export interface ISettingsContext {
   settings: Settings;
   setSettings?: React.Dispatch<React.SetStateAction<Settings>>;
   sort: (algoType: Algo) => void;
+  resetArray: () => void;
 }
 
 export type Items = {
