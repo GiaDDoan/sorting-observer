@@ -23,7 +23,7 @@ const Navbar = () => {
     if(!setSettings) return;
     setSettings(p => ({ ...p, algoType: type }));
   }
-
+console.log(settings)
   return (
     <nav className='w-screen bg-gray-300 grid grid-flow-row'>
       <NavButtons onAlgoChange={onAlgoChange} settings={settings} sort={sort} resetArray={resetArray} />
@@ -37,6 +37,7 @@ const Navbar = () => {
           defaultValue={25}
           min={1}
           onChange={onArrayChange}
+          disabled={settings.sorting}
         />
         <label htmlFor="delay">Delay: {settings.delay}</label>
         <input
@@ -47,8 +48,10 @@ const Navbar = () => {
           defaultValue={15}
           min={1}
           onChange={onDelayChange}
+          disabled={settings.sorting}
         />
       </div>
+      <div className='text-red-500 font-bold'>SORTING: {`${settings.sorting}`}</div>
     </nav>
   )
 }

@@ -54,7 +54,7 @@ const NavButtons: React.FC<Props> = ({ onAlgoChange, settings, sort, resetArray 
         Bubble Sort
       </button>
     </div>
-    <button className="underline" onClick={() => sort(settings.algoType)}>
+    <button className="underline disabled:opacity-25" onClick={() => sort(settings.algoType)} disabled={settings.sorting}>
       Sort!
     </button>
   </div>

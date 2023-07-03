@@ -4,6 +4,7 @@ export interface Settings {
   algoType: Algo;
   arrayLen: number;
   delay: number;
+  sorting: boolean;
 }
 
 export interface ISettingsContext {

@@ -10,7 +10,8 @@ import { getBubbleSortAnims } from '../utils/algorithms/bubbleSort';
 const initVals: Settings = {
   algoType: 'merge sort',
   arrayLen: 25,
-  delay: 15
+  delay: 15,
+  sorting: false,
 }
 
 export const AlgoContext = createContext<ISettingsContext>({
@@ -52,7 +53,7 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
     switch (algoType) {
       case 'insertion sort': {
         const { newArr, animArr } = getInsertionSortAnims(items);
-        animateDivs({ newArr, arr: animArr, setItems, settings });
+        animateDivs({ newArr, arr: animArr, setItems, settings, setSettings });
         break;
       }
       case 'merge sort': {
@@ -60,7 +61,7 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
         const arr: number[][] = [];
         const nums = [...items];
         getMergeSortAnims(nums, aux, arr, 0, items.length - 1);
-        animateMerge({ newArr: nums, arr, setItems, settings });
+        animateMerge({ newArr: nums, arr, setItems, settings, setSettings });
         break;
       }
       case "heap sort": {
@@ -70,6 +71,7 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
           arr: heapSortAnims,
           setItems,
           settings,
+          setSettings
         });
         break;
       }
@@ -80,6 +82,7 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
           arr: quickSortAnims,
           setItems,
           settings,
+          setSettings,
         });
         break;
       }
@@ -91,6 +94,7 @@ const AlgoProvider: React.FC<Props> = ({ children }) => {
           arr: bubbleSortAnims,
           setItems,
           settings,
+          setSettings
         });
         break;
       }
