@@ -23,7 +23,6 @@ const Navbar = () => {
     if(!setSettings) return;
     setSettings(p => ({ ...p, algoType: type }));
   }
-console.log(settings)
   return (
     <nav className='w-screen bg-gray-300 grid grid-flow-row'>
       <NavButtons onAlgoChange={onAlgoChange} settings={settings} sort={sort} resetArray={resetArray} />

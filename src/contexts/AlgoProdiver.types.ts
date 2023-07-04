@@ -1,4 +1,4 @@
-export type Algo = "merge sort" | "insertion sort" | "heap sort" | "quick sort" | "bubble sort";
+export type Algo = "merge sort" | "insertion sort" | "heap sort" | "quick sort" | "bubble sort" | string;
 
 export interface Settings {
   algoType: Algo;
