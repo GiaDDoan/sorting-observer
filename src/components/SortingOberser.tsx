@@ -6,7 +6,7 @@ const SortingOberser = () => {
   const { settings } = useContext(AlgoContext);
 
   return (
-    <section className='row-span-5'>
+    <section className='row-span-4'>
       <div className='flex w-full h-full items-end px-1'>
         {items.map((item, idx) => (
           <div

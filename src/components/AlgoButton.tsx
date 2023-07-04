@@ -18,14 +18,14 @@ const onAlgoChange = (
     }
 
   return (
-    <button
-    className={`border border-teal-100 shadow-md py-2 px-4 transition-all active:scale-95 ${
-      settings.algoType === "bubble sort" && "text-purple-500"
-    }`}
-    onClick={() => onAlgoChange(`${algo}`)}
-  >
-    {`${algo}`}
-  </button>
+      <button
+        className={`py-2 px-4 transition-all focus:outline-none top-2 hover:outline-none bg-red-200 shadow-bottom ${
+          settings.algoType === algo && "shadow-bottomHover translate-y-2"
+        }`}
+        onClick={() => onAlgoChange(`${algo}`)}
+      >
+        {`${algo}`}
+      </button>
   )
 }
 

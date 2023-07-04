@@ -21,7 +21,7 @@ const NavButtons: React.FC<Props> = ({ settings, sort, resetArray }) => (
     <button className="underline" onClick={() => resetArray()}>
       Get new Array
     </button>
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center gap-2">
       {algoList.map((algo, idx) => (
         <AlgoButton key={`${algo}-${idx}`} algo={algo}  />
       ))}

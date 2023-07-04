@@ -24,7 +24,7 @@ const Navbar = () => {
     setSettings(p => ({ ...p, algoType: type }));
   }
   return (
-    <nav className='w-screen bg-gray-300 grid grid-flow-row'>
+    <nav className='w-screen bg-gray-300 grid grid-flow-row row-span-1 gap-2 pt-2'>
       <NavButtons onAlgoChange={onAlgoChange} settings={settings} sort={sort} resetArray={resetArray} />
       <div className='flex flex-col items-center w-full pb-3'>
         <label htmlFor="items_amount">Array Length: {settings.arrayLen}</label>
@@ -50,7 +50,6 @@ const Navbar = () => {
           disabled={settings.sorting}
         />
       </div>
-      <div className='text-red-500 font-bold'>SORTING: {`${settings.sorting}`}</div>
     </nav>
   )
 }
