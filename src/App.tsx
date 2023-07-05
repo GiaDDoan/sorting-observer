@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 
 import SortingOberser from './components/SortingOberser'

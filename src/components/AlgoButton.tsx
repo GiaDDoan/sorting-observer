@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Algo, Settings } from "../contexts/AlgoProdiver.types";
+import { Algo } from "../contexts/AlgoProdiver.types";
 import { AlgoContext } from "../contexts/AlgoProvider";
 
 interface Props {
