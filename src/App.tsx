@@ -1,5 +1,3 @@
-import './App.css'
-
 import SortingOberser from './components/SortingOberser'
 import Navbar from './components/Navbar'
 
