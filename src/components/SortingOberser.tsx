@@ -14,7 +14,7 @@ const SortingOberser = () => {
             key={`${item}-${settings.arrayLen}-${idx}`}
             className={`flex-1`}
             style={{
-              backgroundColor: "#482",
+              backgroundColor: "#228B22",
               height: `${item / 7}%`
             }}
           />

@@ -18,7 +18,7 @@ const algoList = [
 
 const NavButtons: React.FC<Props> = ({ settings, sort, resetArray }) => (
   <div className="row-span-1 flex items-center justify-center w-5/6 max-w-4xl mx-auto gap-5">
-    <button className="underline" onClick={() => resetArray()}>
+    <button className="bg-[#0089FF] py-2 px-4 transition-all focus:outline-none top-2 hover:outline-none shadow-bottom disabled:opacity-20 focus:shadow-bottomHover focus:translate-y-2" onClick={() => resetArray()} disabled={settings.sorting}>
       Get new Array
     </button>
     <div className="flex flex-wrap justify-center gap-2">
@@ -26,7 +26,11 @@ const NavButtons: React.FC<Props> = ({ settings, sort, resetArray }) => (
         <AlgoButton key={`${algo}-${idx}`} algo={algo}  />
       ))}
     </div>
-    <button className="underline disabled:opacity-25" onClick={() => sort(settings.algoType)} disabled={settings.sorting}>
+    <button
+      className={`bg-[#F50051] py-2 px-4 transition-all focus:outline-none top-2 hover:outline-none shadow-bottom disabled:opacity-20 disabled:shadow-bottomHover disabled:translate-y-2`}
+      onClick={() => sort(settings.algoType)}
+      disabled={settings.sorting}
+    >
       Sort!
     </button>
   </div>

@@ -23,10 +23,10 @@ export const animateMerge: AnimateFunc = ({
     const div = document.getElementById(`${index}`);
     if (!div) return;
     setTimeout(() => {
-      div.style.backgroundColor = "#b041f0";
+      div.style.backgroundColor = "#D54900";
       div.style.height = `${newHeight / 7}%`;
       setTimeout(() => {
-        div.style.backgroundColor = "#482";
+        div.style.backgroundColor = "#228B22";
         if (idx === arr.length - 1) {
           setSettings(p => ({ ...p, sorting: false}));
           setItems(newArr);
@@ -51,14 +51,14 @@ export const animateDivs: AnimateFunc = ({
     const div2 = document.getElementById(`${second}`);
     if (!div || !div2) return;
     setTimeout(() => {
-      div.style.backgroundColor = "#b041f0";
-      div2.style.backgroundColor = "#b041f0";
+      div.style.backgroundColor = "#D54900";
+      div2.style.backgroundColor = "#D54900";
       const divHeight = div.style.height;
       div.style.height = div2.style.height;
       div2.style.height = divHeight;
       setTimeout(() => {
-        div.style.backgroundColor = "#482";
-        div2.style.backgroundColor = "#482";
+        div.style.backgroundColor = "#228B22";
+        div2.style.backgroundColor = "#228B22";
         if (idx === arr.length - 1) {
           setItems(newArr);
           if(!setSettings) return;
