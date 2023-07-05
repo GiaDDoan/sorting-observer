@@ -19,7 +19,7 @@ const algoList = [
 const NavButtons: React.FC<Props> = ({ settings, sort, resetArray }) => (
   <div className="row-span-1 flex items-center justify-center w-5/6 max-w-4xl mx-auto gap-5">
     <button className="bg-[#0089FF] py-2 px-4 transition-all focus:outline-none top-2 hover:outline-none shadow-bottom disabled:opacity-20 focus:shadow-bottomHover focus:translate-y-2" onClick={() => resetArray()} disabled={settings.sorting}>
-      Get new Array
+      Get New Array
     </button>
     <div className="flex flex-wrap justify-center gap-2">
       {algoList.map((algo, idx) => (
